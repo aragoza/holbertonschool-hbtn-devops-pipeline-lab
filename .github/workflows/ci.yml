@@ -58,8 +58,7 @@ jobs:
       - name: Run the unit tests
         run: npm run test:unit
 
-      - name: Run tests
+      - name: Run the integration tests
+        run: npm run test:integration
         env:
-          JEST_JUNIT_OUTPUT_DIR: ./reports
-          DATABASE_URL: postgres://${{ env.POSTGRES_USER }}:${{ env.POSTGRES_PASSWORD }}@localhost:5432/${{ env.POSTGRES_DB }}
-        run: npm test -- --reporters=default --reporters=jest-junit
+          DATABASE_URL: postgres://pipeline:pipeline@localhost:5432/pipeline
